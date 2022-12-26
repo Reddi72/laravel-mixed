@@ -58,14 +58,14 @@ sudo apt upgrade
 #### Install Apache2
 
 ```shell
-sudo apt-get install apache2
+sudo apt-get install apache2 -y
 sudo systemctl start apache2
 ```
 #### PHP Installation & Configuration
 ``` shell
 sudo add-apt-repository ppa:ondrej/php
 sudo apt-get update
-sudo apt-get install -y php7.4
+sudo apt-get install -y php7.4 
 ```
 Installing PHP 7.4 Extensions
 ```
@@ -101,7 +101,7 @@ sudo dpkg -i mysql-apt-config_0.8.15-1_all.deb
  * Click on Ok
 ``` 
 sudo apt-get update
-sudo apt-get install mysql-server
+sudo apt-get install mysql-server -y
 mysql --version
 sudo mysql
 ```
