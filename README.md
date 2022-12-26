@@ -118,18 +118,19 @@ Exit
 Creating Database
 
 ```
-sudo mysql
-CREATE DATABASE bluboygames
-SHOW DATABASES
+sudo mysql -u root -p
+CREATE DATABASE bluboygames;
+SHOW DATABASES;
 #here you can see all databases
 ```
-Create User and give db access in mysql : 
+Create User and give database access in mysql : 
 ```sql
 CREATE USER 'bbgamesadmin'@'%' IDENTIFIED BY 'bluboy@123';
 GRANT ALL PRIVILEGES ON bluboygames.* TO 'bbgamesadmin'@'%';
 FLUSH PRIVILEGES;
 
 SELECT user, host FROM mysql.user;
+exit;
 ```
 
 #### Composer Installation
@@ -145,7 +146,7 @@ sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 #### Creating project directory
 ```
 cd /var/www
-mkdir bluboy
+sudo mkdir bluboy
 ```
 
 Giving the owner Permissions to project Directory
@@ -167,6 +168,7 @@ chmod -R 777 /var/www/bluboy/logs
 ```
 Giving the permissions to storage and bootstarp folders
 ```shell
+cd bluboy/
 sudo chmod -R 777 storage/
 sudo chmod -R 777 bootstrap/
 ```
@@ -210,7 +212,7 @@ sudo vim <domain/subdomain>.conf
 
          DocumentRoot /var/www/<projectname>                        
 
-        <Directory /var/www/<projectname>/public/ >                        
+        <Directory /var/www/<projectname>/public/>                        
             Options Indexes FollowSymLinks
             AllowOverride All
             Require all granted
@@ -237,6 +239,7 @@ projectname = bluboy*
 
 Goto your Project directory and Run the following
 ````
+cd /var/www/bluboy
 composer install 
 php artisan key:generate
 php artisan config:clear
@@ -296,7 +299,7 @@ VirtualHost *:80>
             Require all granted
         </Directory>
         ErrorLog /var/www/<projectname>/logs/error.log
-		CustomLog /var/www/<projectname>/logs/access.log combined
+	CustomLog /var/www/<projectname>/logs/access.log combined
 </VirtualHost>
 #adding ssl certificates file path
 SSLEngine on
